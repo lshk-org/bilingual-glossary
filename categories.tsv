@@ -1,0 +1,22 @@
+id	code	description
+1	PHT	Phonetics
+2	PHN	Phonology
+3	MOR	Morphology
+4	LEX	Lexicology
+5	SYN	Syntax
+6	SEM	Semantics 
+7	PRG	Pragmatics
+8	DSC	Discourse
+9	TYP	Language typology
+10	HIS	Historical linguistics
+11	PSY	Psycholinguistics
+12	SOC	Sociolinguistics
+13	CML	Computational linguistics
+14	APL	Applied linguistics
+15	NRL	Neurolinguistics
+16	WRS	Writing system
+17	SGN	Semiotics and Sign linguistics
+18	GEN	General linguistics
+19	PHI	Philosophy of language
+20	OTH	Others
+21	LAN	Language name
