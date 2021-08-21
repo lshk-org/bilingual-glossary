@@ -103,10 +103,8 @@
             columns:[                 //define the table columns
                 {title:"英文 English", field:"eng"},
                 {title:"中文 Chinese", field:"chi"},
-                {title:"狀況 Status", field:"rec", mutatorParams:{}, 
-                    mutator: recMutator,
-                },
-                {title:"範疇 Field", field:"field1", mutatorParams: {}, mutator: fieldMutator},
+                {title:"狀況 Status", field:"rec", mutator: recMutator},
+                {title:"範疇 Field", field:"field1", mutator: fieldMutator},
             ],
             groupBy:"eng",
             rowFormatter:function(row){
