@@ -1,121 +1,189 @@
 <!DOCTYPE html>
-<html lang='zh-hk'>
-<head>
-<title>LSHK Linguistic Glossary</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<link href="https://unpkg.com/tabulator-tables/dist/css/tabulator.min.css" rel="stylesheet">
-<link href="https://unpkg.com/tabulator-tables/dist/css/bootstrap/tabulator_bootstrap4.min.css" rel="stylesheet">
+<html lang="zh-hk">
+  <head>
+    <title>LSHK Linguistic Glossary</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link
+      href="https://unpkg.com/tabulator-tables/dist/css/tabulator.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://unpkg.com/tabulator-tables/dist/css/bootstrap/tabulator_bootstrap4.min.css"
+      rel="stylesheet"
+    />
 
-<script type="text/javascript" src="https://unpkg.com/tabulator-tables/dist/js/tabulator.min.js"></script>
+    <script
+      type="text/javascript"
+      src="https://unpkg.com/tabulator-tables/dist/js/tabulator.min.js"
+    ></script>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
-<link href="bootstrap.min.css" rel="stylesheet"> 
-
-</head>
-<body onload="loadTable()" style='line-height:1.2'>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
+    <link href="bootstrap.min.css" rel="stylesheet" />
+  </head>
+  <body onload="loadTable()" style="line-height: 1.2">
     <div class="container">
-        <h1 class='title is-1'>LSHK Linguistic Glossary</h1>
-        <h2 class='subtitle is-3'>香港語言學學會雙語術語對照表</h2>
-        <p>Chinese and English bilingual listing of more than 7,400 linguistic terms, brought to you by The Linguistic Society of Hong Kong (LSHK).</p>
-    
-        <div class='container p-1'>
-            <div class="btn-group row" style='width:100%'>
-                <div class='col-sm-2'>
-                    <select id="filter-field" class="form-select">
-                        <option value="eng">英文 English</option>
-                        <option value="chi">中文 Chinese</option>
-                        </select>
-                </div>
-                <div class='col-sm-2'>
-                    <select id="filter-type" class="form-select" >
-                        <option value="like">近似 similar to</option>
-                        <option value="=">一致 identical to</option>
-                        </select>      
-                </div>
-                <div class='col-sm-6'>
-                    <input id="filter-value" class="input-group-text col-12" type="text" placeholder="搜尋字串 Search String">
-                </div>
-                <div class='col-sm-2'>
-                    <button id="filter-clear" class="btn btn-danger">清除 Clear</button>
-                </div>
-            </div>
+      <h1 class="title is-1">LSHK Linguistic Glossary</h1>
+      <h2 class="subtitle is-3">香港語言學學會雙語術語對照表</h2>
+      <p>
+        Chinese and English bilingual listing of more than 7,400 linguistic
+        terms, brought to you by The Linguistic Society of Hong Kong (LSHK).
+      </p>
+
+      <div class="container p-1">
+        <div class="btn-group row" style="width: 100%">
+          <div class="col-sm-2">
+            <select id="filter-field" class="form-select">
+              <option value="eng">英文 English</option>
+              <option value="chi">中文 Chinese</option>
+            </select>
+          </div>
+          <div class="col-sm-2">
+            <select id="filter-type" class="form-select">
+              <option value="like">近似 similar to</option>
+              <option value="=">一致 identical to</option>
+            </select>
+          </div>
+          <div class="col-sm-6">
+            <input
+              id="filter-value"
+              class="input-group-text col-12"
+              type="text"
+              placeholder="搜尋字串 Search String"
+            />
+          </div>
+          <div class="col-sm-2">
+            <button id="filter-clear" class="btn btn-danger">清除 Clear</button>
+          </div>
         </div>
-        <hr/>
-        <h2>總表 Table</h2>
-        <div id="the-table"></div>
-        <hr>
-        <p>The website content is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.</p>
-        <p>We would like to thank the Terminology Association of Hong Kong (TAHK) for their generous financial support for the development of this glossary. The members of TAHK are: Dr. Lun Suen Caesar (City University of Hong Kong), Prof. Cheung Kwan-hin (The Hong Kong Polytechnic University), and Prof. Lu Qin (The Hong Kong Polytechnic University).</p>
+      </div>
+      <hr />
+      <h2>總表 Table</h2>
+      <div id="the-table"></div>
+      <hr />
+      <p>
+        The website content is licensed
+        <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/"
+          >CC BY NC SA 4.0</a
+        >.
+      </p>
+      <p>
+        The LSHK Linguistic Glossary was compiled by
+        <b>The Bilingual Glossary Work Group</b>. The Bilingual Glossary Work
+        Group was set up in 2013 with the objective to put together a Chinese
+        and English bilingual list of linguistic terminologies. All outputs from
+        the Work Group represent the joint efforts of its members from 2013 to
+        2021. Core members at different stages include Kwan-hin CHEUNG, Bit-chee
+        KWOK, Peppina Po-lun LEE, Thomas Hun-tak LEE, Caesar Suen LUN, Sze-wing
+        TANG, John WAKEFIELD (in alphabetical order of the last name). The group
+        would like to thank the Terminology Association of Hong Kong (TAHK) for
+        their generous financial support for the development of this glossary.
+      </p>
     </div>
-</body>
-<script>
+  </body>
+  <script>
     //Define variables for input elements
     let fieldEl = document.getElementById("filter-field");
     let typeEl = document.getElementById("filter-type");
     let valueEl = document.getElementById("filter-value");
 
-    let description = {"PHT":"Phonetics","PHN":"Phonology","MOR":"Morphology","LEX":"Lexicology","SYN":"Syntax","SEM":"Semantics ","PRG":"Pragmatics","DSC":"Discourse","TYP":"Language typology","HIS":"Historical linguistics","PSY":"Psycholinguistics","SOC":"Sociolinguistics","CML":"Computational linguistics","APL":"Applied linguistics","NRL":"Neurolinguistics","WRS":"Writing system","SGN":"Semiotics and Sign linguistics","GEN":"General linguistics","PHI":"Philosophy of language","OTH":"Others","LAN":"Language name"}
+    let description = {
+      PHT: "Phonetics",
+      PHN: "Phonology",
+      MOR: "Morphology",
+      LEX: "Lexicology",
+      SYN: "Syntax",
+      SEM: "Semantics ",
+      PRG: "Pragmatics",
+      DSC: "Discourse",
+      TYP: "Language typology",
+      HIS: "Historical linguistics",
+      PSY: "Psycholinguistics",
+      SOC: "Sociolinguistics",
+      CML: "Computational linguistics",
+      APL: "Applied linguistics",
+      NRL: "Neurolinguistics",
+      WRS: "Writing system",
+      SGN: "Semiotics and Sign linguistics",
+      GEN: "General linguistics",
+      PHI: "Philosophy of language",
+      OTH: "Others",
+      LAN: "Language name",
+    };
     let loadTable = () => {
-
-        //Trigger setFilter function with correct parameters
-        function updateFilter(){
-            let filterVal = fieldEl.options[fieldEl.selectedIndex].value;
-            let typeVal = typeEl.options[typeEl.selectedIndex].value;
-            let filter = filterVal //No Custom Filter
-            if(filterVal){
-                table.setFilter(filter,typeVal, valueEl.value);
-            }
+      //Trigger setFilter function with correct parameters
+      function updateFilter() {
+        let filterVal = fieldEl.options[fieldEl.selectedIndex].value;
+        let typeVal = typeEl.options[typeEl.selectedIndex].value;
+        let filter = filterVal; //No Custom Filter
+        if (filterVal) {
+          table.setFilter(filter, typeVal, valueEl.value);
         }
+      }
 
-        //Update filters on value change
-        document.getElementById("filter-field").addEventListener("change", updateFilter);
-        document.getElementById("filter-type").addEventListener("change", updateFilter);
-        document.getElementById("filter-value").addEventListener("keyup", updateFilter);
+      //Update filters on value change
+      document
+        .getElementById("filter-field")
+        .addEventListener("change", updateFilter);
+      document
+        .getElementById("filter-type")
+        .addEventListener("change", updateFilter);
+      document
+        .getElementById("filter-value")
+        .addEventListener("keyup", updateFilter);
 
-        //Clear filters on "Clear Filters" button click
-        document.getElementById("filter-clear").addEventListener("click", function(){
-            fieldEl.value = "";
-            typeEl.value = "=";
-            valueEl.value = "";
+      //Clear filters on "Clear Filters" button click
+      document
+        .getElementById("filter-clear")
+        .addEventListener("click", function () {
+          fieldEl.value = "";
+          typeEl.value = "=";
+          valueEl.value = "";
 
-            table.clearFilter();
+          table.clearFilter();
         });
 
-        var recMutator = function(value, data, type, params, component){
+      var recMutator = function (value, data, type, params, component) {
+        return { R: "建議 Recommended", A: "其他 Alternatives" }[value]; //return the new value for the cell data.
+      };
 
-            return {'R':'建議 Recommended','A':'其他 Alternatives'}[value]; //return the new value for the cell data.
-        }
+      var fieldMutator = function (value, data, type, params, component) {
+        return (
+          description[data.field1] +
+          (data.field2 ? ", " + description[data.field2] : "")
+        );
+      };
 
-        var fieldMutator = function(value, data, type, params, component){
-            return description[data.field1] + (data.field2? ", " + description[data.field2]:"");
-        }
-
-        var table = new Tabulator("#the-table", {
-            ajaxURL:"glossary.json", //ajax URL
-            layout:"fitColumns",      //fit columns to width of table
-            responsiveLayout:"hide",  //hide columns that dont fit on the table
-            tooltips:false,            //show tool tips on cells
-            history:false,             //allow undo and redo actions on the table
-            pagination:"local",       //paginate the data
-            paginationSize:50,         //allow 7 rows per page of data
-            movableColumns:false,      //allow column order to be changed
-            resizableRows:false,       //allow row order to be changed
-            columns:[                 //define the table columns
-                {title:"英文 English", field:"eng"},
-                {title:"中文 Chinese", field:"chi"},
-                {title:"狀況 Status", field:"rec", mutator: recMutator},
-                {title:"範疇 Field", field:"field1", mutator: fieldMutator},
-            ],
-            groupBy:"eng",
-            rowFormatter:function(row){
-                if(row.getData().rec == '建議 Recommended'){
-                    row.getElement().classList.add("table-success");
-                } else if(row.getData().rec == '其他 Alternatives'){
-                    row.getElement().classList.add("table-warning");
-                }
-            },
-        });
-    }
-</script>
+      var table = new Tabulator("#the-table", {
+        ajaxURL: "glossary.json", //ajax URL
+        layout: "fitColumns", //fit columns to width of table
+        responsiveLayout: "hide", //hide columns that dont fit on the table
+        tooltips: false, //show tool tips on cells
+        history: false, //allow undo and redo actions on the table
+        pagination: "local", //paginate the data
+        paginationSize: 50, //allow 7 rows per page of data
+        movableColumns: false, //allow column order to be changed
+        resizableRows: false, //allow row order to be changed
+        columns: [
+          //define the table columns
+          { title: "英文 English", field: "eng" },
+          { title: "中文 Chinese", field: "chi" },
+          { title: "狀況 Status", field: "rec", mutator: recMutator },
+          { title: "範疇 Field", field: "field1", mutator: fieldMutator },
+        ],
+        groupBy: "eng",
+        rowFormatter: function (row) {
+          if (row.getData().rec == "建議 Recommended") {
+            row.getElement().classList.add("table-success");
+          } else if (row.getData().rec == "其他 Alternatives") {
+            row.getElement().classList.add("table-warning");
+          }
+        },
+      });
+    };
+  </script>
 </html>
